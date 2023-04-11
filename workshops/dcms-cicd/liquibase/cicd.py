@@ -21,6 +21,7 @@ def run_sqlcl(schema, password, service, cmd, resolution, conn_file, run_as):
         wallet = f'set cloudconfig {conn_file}'
     else:
         lb_env['TNS_ADMIN'] = tns_admin #<-Global
+        wallet=''
 
     # Keep password off the command line/shell history
     sql_cmd = f'''
@@ -49,16 +50,16 @@ def run_sqlcl(schema, password, service, cmd, resolution, conn_file, run_as):
 
 def deploy(password, resolution, conn_file, args):
     log.info('Running controller.admin.xml')
-    cmd = 'lb update -changelog controller.admin.xml;'
+    cmd = 'lb update -changelog-file controller.admin.xml;'
     run_sqlcl(args.dbUser, password, args.dbName, cmd, resolution, conn_file, 'ADMIN')
 
     log.info('Running controller.xml')
-    cmd = 'lb update -changelog controller.xml;'
+    cmd = 'lb update -changelog-file controller.xml;'
     run_sqlcl(args.dbUser, password, args.dbName, cmd, resolution, conn_file, args.dbUser)
 
     if os.path.exists('controller.data.xml'):
         log.info('Running controller.data.xml')
-        cmd = 'lb update -changelog controller.data.xml;'
+        cmd = 'lb update -changelog-file controller.data.xml;'
         run_sqlcl(args.dbUser, password, args.dbName, cmd, resolution, conn_file, args.dbUser)
 
 
@@ -136,7 +137,7 @@ if __name__ == "__main__":
             log.fatal('Database password required')
             sys.exit(1)
 
-    resolution = 'wallet' # Default
+    resolution = ''  #'wallet' # Default
     conn_file  = None
     if args.dbWallet:
         conn_file     = args.dbWallet
