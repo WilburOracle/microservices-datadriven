@@ -76,8 +76,8 @@ public class InventoryResource {
             pw = pwSecretFromK8s;
         }
         inventorypw = pw;
-        //atpInventoryPDB.setUser(inventoryuser);
-        //atpInventoryPDB.setPassword(pw);
+        atpInventoryPDB.setUser(inventoryuser);
+        atpInventoryPDB.setPassword(pw);
         inventoryuser = atpInventoryPDB.getUser();
         try (Connection connection  = atpInventoryPDB.getConnection()) { //fail if connection is not successful rather than go into listening loop
             System.out.println("InventoryResource.init connection:" + connection);
