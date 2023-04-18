@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: inventory
-          image: ${DOCKER_REGISTRY}/inventory-helidon
+          image: localhost:5000/inventory-helidon
           imagePullPolicy: Always
           env:
             - name: oracle.ucp.jdbc.PoolDataSource.inventorypdb.user
@@ -30,10 +30,6 @@ spec:
               value: "ORDERQUEUE"
             - name: inventoryqueuename
               value: "inventoryqueue"
-            - name: OCI_REGION
-              value: "${OCI_REGION-}"
-            - name: VAULT_SECRET_OCID
-              value: "${VAULT_SECRET_OCID-}"
             - name: isSuggestiveSaleAIEnabled
               value: "${IS_SUGGESTIVE_SALE_ENABLED}"
             - name: dbpassword

@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ${DOCKER_REGISTRY}/frontend-helidon
+        image: localhost:5000/frontend-helidon
         imagePullPolicy: Always
         env:
           - name: SECRETS_PASSWORD
