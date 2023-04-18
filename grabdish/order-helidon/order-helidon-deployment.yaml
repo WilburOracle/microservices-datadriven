@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: order
-        image: ${DOCKER_REGISTRY}/order-helidon:0.1
+        image: ${DOCKER_REGISTRY}/order-helidon
         imagePullPolicy: Always
         env:
         - name: oracle.ucp.jdbc.PoolDataSource.orderpdb.user
