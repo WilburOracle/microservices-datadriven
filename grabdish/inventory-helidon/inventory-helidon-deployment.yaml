@@ -23,7 +23,7 @@ spec:
             - name: oracle.ucp.jdbc.PoolDataSource.inventorypdb.user
               value: "inventoryuser"
             - name: oracle.ucp.jdbc.PoolDataSource.inventorypdb.URL
-              value: "jdbc:oracle:thin:@${INVENTORY_DB_ALIAS}"
+              value: "jdbc:oracle:thin:@${DB1_ALIAS}"
             - name: queueowner
               value: "AQ"
             - name: orderqueuename
@@ -38,13 +38,6 @@ spec:
               value: "${IS_SUGGESTIVE_SALE_ENABLED}"
             - name: dbpassword
               value: "${DB_PASSWORD}"
-          volumeMounts:
-            - name: creds
-              mountPath: /msdataworkshop/creds
           ports:
             - containerPort: 8080
       restartPolicy: Always
-      volumes:
-        - name: creds
-          secret:
-            secretName: inventory-db-tns-admin-secret

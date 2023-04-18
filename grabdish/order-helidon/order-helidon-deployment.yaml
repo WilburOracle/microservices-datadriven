@@ -23,7 +23,7 @@ spec:
         - name: oracle.ucp.jdbc.PoolDataSource.orderpdb.user
           value: "ORDERUSER"
         - name: oracle.ucp.jdbc.PoolDataSource.orderpdb.URL
-          value: "jdbc:oracle:thin:@${ORDER_DB_ALIAS}"
+          value: "jdbc:oracle:thin:@${DB1_ALIAS}"
         - name: queueowner
           value: "AQ"
         - name: orderqueuename
@@ -36,9 +36,6 @@ spec:
           value: "${VAULT_SECRET_OCID-}"
         - name: dbpassword
           value: "${DB_PASSWORD}"
-        volumeMounts:
-        - name: creds
-          mountPath: /msdataworkshop/creds
         ports:
         - containerPort: 8080
         livenessProbe:
@@ -54,10 +51,6 @@ spec:
           initialDelaySeconds: 40
           periodSeconds: 3
       restartPolicy: Always
-      volumes:
-      - name: creds
-        secret:
-          secretName: order-db-tns-admin-secret
       topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
