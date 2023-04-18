@@ -24,6 +24,10 @@ spec:
           value: "jdbc:oracle:thin:@168.138.217.124:1521/ORCLPDB1"
         - name: inventoryqueuename
           value: "inventoryqueue"
+        - name: OCI_REGION
+          value: ""
+        - name: VAULT_SECRET_OCID
+          value: ""
         - name: dbpassword
           value: oracle
         ports:
