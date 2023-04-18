@@ -23,7 +23,7 @@ spec:
             - name: oracle.ucp.jdbc.PoolDataSource.inventorypdb.user
               value: "inventoryuser"
             - name: oracle.ucp.jdbc.PoolDataSource.inventorypdb.URL
-              value: "jdbc:oracle:thin:@${DB1_ALIAS}"
+              value: "jdbc:oracle:thin:@168.138.217.124:1521/ORCLPDB1"
             - name: queueowner
               value: "AQ"
             - name: orderqueuename
@@ -31,9 +31,9 @@ spec:
             - name: inventoryqueuename
               value: "inventoryqueue"
             - name: isSuggestiveSaleAIEnabled
-              value: "${IS_SUGGESTIVE_SALE_ENABLED}"
+              value: "false"
             - name: dbpassword
-              value: "${DB_PASSWORD}"
+              value: "oracle"
           ports:
             - containerPort: 8080
       restartPolicy: Always

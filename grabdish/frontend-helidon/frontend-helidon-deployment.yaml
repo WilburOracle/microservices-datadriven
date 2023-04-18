@@ -23,9 +23,6 @@ spec:
         imagePullPolicy: Always
         env:
           - name: SECRETS_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: frontendadmin
-                key: password
+            value: "oracle"
         ports:
         - containerPort: 8080

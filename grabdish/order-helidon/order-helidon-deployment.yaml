@@ -23,7 +23,7 @@ spec:
         - name: oracle.ucp.jdbc.PoolDataSource.orderpdb.user
           value: "ORDERUSER"
         - name: oracle.ucp.jdbc.PoolDataSource.orderpdb.URL
-          value: "jdbc:oracle:thin:@${DB1_ALIAS}"
+          value: "jdbc:oracle:thin:@168.138.217.124:1521/ORCLPDB1"
         - name: queueowner
           value: "AQ"
         - name: orderqueuename
@@ -31,7 +31,7 @@ spec:
         - name: inventoryqueuename
           value: "inventoryqueue"
         - name: dbpassword
-          value: "${DB_PASSWORD}"
+          value: "oracle"
         ports:
         - containerPort: 8080
         livenessProbe:
