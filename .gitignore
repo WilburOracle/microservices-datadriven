@@ -510,3 +510,4 @@ workshops/oracleAQ/qJava/.classpath
 workshops/oracleAQ/qJava/.factorypath
 workshops/oracleAQ/qJava/.project
 *.prefs
+docker_images
